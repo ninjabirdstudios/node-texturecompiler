@@ -1,0 +1,47 @@
+{
+  "name"         : "texturecompiler",
+  "noAnalyze"    : false,
+  "preferGlobal" : false,
+  "main"         : "index.js",
+  "version"      : "1.0.0",
+  "license"      : "Public Domain",
+  "author"       : "Russell Klenk <russ@ninjabirdstudios.com>",
+  "description"  : "Texture data compiler for content.js",
+  "homepage"     : "https://github.com/ninjabirdstudios/node-texturecompiler",
+  "bugs"         : "https://github.com/ninjabirdstudios/node-texturecompiler/issues",
+  "contributors" : [
+    {
+      "name"  : "Russell Klenk",
+      "email" : "russ@ninjabirdstudios.com"
+    }
+  ],
+  "repository" : {
+    "type"     : "git",
+    "url"      : "https://github.com/ninjabirdstudios/node-texturecompiler.git"
+  },
+  "bin" : {
+  },
+  "scripts" : {
+  },
+  "keywords" : [
+    "image",
+    "texture",
+    "webgl",
+    "opengl",
+    "opengles",
+    "conversion",
+    "tool",
+    "game",
+    "graphics"
+  ],
+  "dependencies" : {
+  },
+  "devDependencies" : {
+  },
+  "bundleDependencies" : [
+  ],
+  "engine"  : {
+    "node"  : ">=0.8",
+    "npm"   : ">=1.1.36"
+  }
+}

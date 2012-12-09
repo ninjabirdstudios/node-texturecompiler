@@ -1,0 +1,18 @@
+{
+    "type" : "COLOR",
+    "format" : "RGB",
+    "target" : "TEXTURE_2D",
+    "sourcePath" : "nodejs_logo.png",
+    "wrapModeS" : "",
+    "wrapModeT" : "",
+    "minifyFilter" : "",
+    "magnifyFilter" : "",
+    "borderMode" : "",
+    "premultipliedAlpha" : false,
+    "forcePowerOfTwo" : false,
+    "flipY" : true,
+    "buildMipmaps" : true,
+    "levelCount" : 0,
+    "targetWidth" : 0,
+    "targetHeight" : 0
+}
