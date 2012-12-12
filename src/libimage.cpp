@@ -1913,6 +1913,26 @@ void image::scale_alpha_to_coverage(
 
 /*/////////////////////////////////////////////////////////////////////////80*/
 
+void image::premultiply_alpha(
+    image::buffer_t *buffer,
+    size_t           channel_base,
+    size_t           channel_count,
+    float const     *alpha_channel)
+{
+    size_t w = buffer->channel_width;
+    size_t h = buffer->channel_height;
+    size_t c = buffer->channel_count;
+    for (size_t i = 0; i < c; ++i)
+    {
+        float const *a = alpha_channel;
+        float       *p = buffer->channels[channel_base + i];
+        for (size_t  j = 0; j < w * h; ++j)
+            *p++ *= *a++;
+    }
+}
+
+/*/////////////////////////////////////////////////////////////////////////80*/
+
 /*/////////////////////////////////////////////////////////////////////////////
 //    $Id$
 ///////////////////////////////////////////////////////////////////////////80*/

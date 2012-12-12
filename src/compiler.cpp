@@ -499,6 +499,8 @@ void texture_compiler_inputs_init(texture_compiler_inputs_t *inputs)
         inputs->maximum_levels  = 0;
         inputs->build_mipmaps   = false;
         inputs->force_pow2      = false;
+        inputs->premultiply_a   = false;
+        inputs->flip_y          = false;
     }
 }
 
@@ -598,6 +600,7 @@ bool file_to_buffer(char const *file, image::buffer_t *buffer)
 
     if (stbi_is_hdr(file))
     {
+        stbi_set_unpremultiply_on_load(1);
         float *pixels  = stbi_loadf(file,  &width, &height, &channels, 0);
         if (pixels && create_buffer(width, height, channels, buffer))
         {
@@ -610,6 +613,7 @@ bool file_to_buffer(char const *file, image::buffer_t *buffer)
     }
     else
     {
+        stbi_set_unpremultiply_on_load(1);
         uint8_t *pixels = stbi_load(file, &width, &height, &channels, 0);
         if (pixels && create_buffer(width, height, channels, buffer))
         {
@@ -897,11 +901,24 @@ bool compile_texture(
     size_t           level_0_h   = inputs->target_height;
     int32_t          mode        = inputs->border_mode;
     build_level0(inputs->input_image, level_0_w, level_0_h, mode, &level_0);
+    if (inputs->flip_y)  image::flip(&level_0);
 
     // generate mipmaps (or not, if level_count is 1).
     size_t           level_count = inputs->maximum_levels;
     image::buffer_t *level_data  = outputs->level_data;
     build_mipmaps(&level_0, mode,  level_count, level_data);
+
+    // pre-multiply RGB color values by alpha, if desired  and
+    // if the image has four channels (one assumed to be alpha).
+    if (inputs->premultiply_a && 4 == level_0.channel_count)
+    {
+        for (size_t i = 0; i < level_count; ++i)
+        {
+            image::premultiply_alpha(
+                &level_data[i], 0, 3,
+                 level_data[i].channels[3]);
+        }
+    }
 
     // we're done; set the result structure.
     outputs->error_message  = NO_ERROR;

@@ -1559,6 +1559,19 @@ CMN_PUBLIC void scale_alpha_to_coverage(
     float   desired_coverage,
     float   alpha_reference);
 
+/// Pre-multiplies the RGB color values by the alpha channel value.
+///
+/// @param buffer The image buffer to modify.
+/// @param channel_base The zero-based index of the first channel to modify.
+/// @param channel_count The number of channels to modify, starting at the
+/// channel @a channel_base.
+/// @param alpha_channel The alpha channel values.
+CMN_PUBLIC void premultiply_alpha(
+    image::buffer_t *buffer,
+    size_t           channel_base,
+    size_t           channel_count,
+    float const     *alpha_channel);
+
 /// Retrieves a pointer to the data for a specified item within an image array.
 ///
 /// @param image Pointer to the descriptor for the image array.

@@ -866,6 +866,8 @@ v8::Handle<v8::Value> Compile(v8::Arguments const &args)
     tcinp.maximum_levels = tcarg.level_count;
     tcinp.build_mipmaps  = tcarg.build_mipmaps;
     tcinp.force_pow2     = tcarg.force_pow2;
+    tcinp.premultiply_a  = tcarg.premultiplied;
+    tcinp.flip_y         = tcarg.flip_y;
 
     // build the texture data.
     if (!compile_texture(&tcinp, &tcout))

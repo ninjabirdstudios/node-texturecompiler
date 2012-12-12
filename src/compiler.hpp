@@ -37,6 +37,8 @@ struct texture_compiler_inputs_t
     size_t           maximum_levels; /// Maximum number of mip-levels.
     bool             build_mipmaps;  /// Build mipmap chain?
     bool             force_pow2;     /// Force power-of-two dimensions?
+    bool             premultiply_a;  /// Output premultiplied alpha?
+    bool             flip_y;         /// Flip image for bottom-left origin?
 };
 
 /// A structure used for returning data from the texture compiler.

@@ -39,6 +39,7 @@ Implemented Features
  * Image downsampling performed in light-linear space.
  * Automatic resizing of images to power-of-two dimensions if desired.
  * Support for non-power-of-two images.
+ * Image output with pre-multiplied alpha.
  * Generation of mip-maps down to 1x1, or a fixed number of levels.
 
 TODOs
@@ -46,11 +47,9 @@ TODOs
 
  * Investigate ringing issues with Kaiser and Lanczos filters with widths
    larger than 1.0 and large sample counts.
- * Have the texture.js utility use a .texture (JSON) file as input.
  * Implement support for offline construction of texture atlases.
  * Implement support for compressed texture formats (S3TC/DXT, PVRTC and ETC).
  * Add additional validations beyond the ones already present.
- * Output with/without premultiplied alpha.
  * Support output to container formats which have associated metadata built-in.
 
 Installation
